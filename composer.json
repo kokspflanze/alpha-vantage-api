@@ -1,0 +1,20 @@
+{
+    "name": "kokspflanze/alpha-vantage-api",
+    "type": "library",
+    "description": "Alpha Vantage API client",
+    "license": "MIT",
+    "keywords": [
+        "api",
+        "alpha-vantage",
+        "alphavantage"
+    ],
+    "homepage": "https://github.com/kokspflanze/alpha-vantage-api",
+    "autoload": {
+        "psr-4": {
+            "AlphaVantage\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^7.0"
+    }
+}
