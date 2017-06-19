@@ -30,12 +30,13 @@ class AbstractApi
      */
     protected function get(string $functionName, string $symbolName, $exchangeName, array $params = [])
     {
-        unset($params['functions'], $params['functions']);
+        unset($params['functions'], $params['functions'], $params['apikey']);
 
         $httpQuery = http_build_query(array_merge(
             [
                 'function' => $functionName,
                 'symbol' => sprintf('%s:%s', $exchangeName?: 'NASDAQ', $symbolName),
+                'apikey' => $this->options->getApiKey(),
             ],
             $params
         ));
