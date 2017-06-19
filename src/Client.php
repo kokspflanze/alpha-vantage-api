@@ -26,8 +26,11 @@ class Client
         $name = $this->getApiName($name);
 
         switch ($name) {
+            case 'globalquote' :
+                $api = new Api\GlobalQuote($this->options);
+                break;
             case 'timeseriesintraday' :
-                $api = new Api\TimeSeries\Intraday();
+                $api = new Api\TimeSeries($this->options);
                 break;
 
             default:
