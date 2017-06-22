@@ -7,8 +7,6 @@ use GuzzleHttp\Client;
 
 class AbstractApi
 {
-    /** @var string */
-    protected $functionName = '';
     /** @var  Options */
     protected $options;
 
@@ -24,11 +22,11 @@ class AbstractApi
     /**
      * @param string $functionName
      * @param string $symbolName
-     * @param $exchangeName
+     * @param null|string $exchangeName
      * @param array $params
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return array
      */
-    protected function get(string $functionName, string $symbolName, $exchangeName, array $params = [])
+    protected function get(string $functionName, string $symbolName, $exchangeName = null, array $params = [])
     {
         unset($params['functions'], $params['functions'], $params['apikey']);
 
@@ -42,7 +40,9 @@ class AbstractApi
         ));
 
         $httpClient = new Client();
-        return $httpClient->get($this->getApiUri() . $httpQuery);
+        $response = $httpClient->get($this->getApiUri() . $httpQuery);
+
+        return \GuzzleHttp\json_decode($response->getBody()->getContents(), true);
     }
 
     /**
