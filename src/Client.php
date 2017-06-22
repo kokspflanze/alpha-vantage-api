@@ -2,6 +2,14 @@
 
 namespace AlphaVantage;
 
+/**
+ * Class Client
+ * @package AlphaVantage
+ *
+ * @method Api\GlobalQuote globalquote
+ * @method Api\TimeSeries timeseries
+ * @method Api\Indicators indicators
+ */
 class Client
 {
     /** @var  Options */
@@ -29,8 +37,11 @@ class Client
             case 'globalquote' :
                 $api = new Api\GlobalQuote($this->options);
                 break;
-            case 'timeseriesintraday' :
+            case 'timeseries' :
                 $api = new Api\TimeSeries($this->options);
+                break;
+            case 'indicators' :
+                $api = new Api\Indicators($this->options);
                 break;
 
             default:
