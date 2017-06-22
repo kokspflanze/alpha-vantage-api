@@ -2,6 +2,10 @@
 
 namespace AlphaVantage;
 
+/**
+ * Class Options
+ * @package AlphaVantage
+ */
 class Options
 {
     /** @var string */

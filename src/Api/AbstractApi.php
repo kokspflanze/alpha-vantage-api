@@ -5,6 +5,10 @@ namespace AlphaVantage\Api;
 use AlphaVantage\Options;
 use GuzzleHttp\Client;
 
+/**
+ * Class AbstractApi
+ * @package AlphaVantage\Api
+ */
 class AbstractApi
 {
     /** @var  Options */
@@ -21,21 +25,26 @@ class AbstractApi
 
     /**
      * @param string $functionName
-     * @param string $symbolName
+     * @param null|string $symbolName
      * @param null|string $exchangeName
      * @param array $params
      * @return array
      */
-    protected function get(string $functionName, string $symbolName, $exchangeName = null, array $params = [])
+    protected function get(string $functionName, string $symbolName = null, $exchangeName = null, array $params = [])
     {
         unset($params['functions'], $params['functions'], $params['apikey']);
 
+        $basicData = [
+            'function' => $functionName,
+            'apikey' => $this->options->getApiKey(),
+        ];
+
+        if (null !== $symbolName) {
+            $basicData['symbol'] = sprintf('%s:%s', $exchangeName?: 'NASDAQ', $symbolName);
+        }
+
         $httpQuery = http_build_query(array_merge(
-            [
-                'function' => $functionName,
-                'symbol' => sprintf('%s:%s', $exchangeName?: 'NASDAQ', $symbolName),
-                'apikey' => $this->options->getApiKey(),
-            ],
+            $basicData,
             $params
         ));
 

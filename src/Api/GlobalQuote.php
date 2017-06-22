@@ -2,6 +2,10 @@
 
 namespace AlphaVantage\Api;
 
+/**
+ * Class GlobalQuote
+ * @package AlphaVantage\Api
+ */
 class GlobalQuote extends AbstractApi
 {
     /**

@@ -2,22 +2,32 @@
 
 namespace AlphaVantage\Api;
 
+/**
+ * Class TimeSeries
+ * @package AlphaVantage\Api
+ */
 class TimeSeries extends AbstractApi
 {
     const OUTPUT_TYPE_COMPACT = 'compact';
     const OUTPUT_TYPE_FULL = 'full';
 
+    const INTERVAL_1 = '1min';
+    const INTERVAL_5 = '5min';
+    const INTERVAL_15 = '15min';
+    const INTERVAL_30 = '30min';
+    const INTERVAL_60 = '60min';
+
     /**
      * @param string $symbolName
      * @param string $exchangeName
-     * @param int $interval
+     * @param string $interval
      * @param string $outputType
      * @return array
      */
     public function intraday(
         string $symbolName,
         string $exchangeName,
-        int $interval,
+        string $interval,
         string $outputType = self::OUTPUT_TYPE_COMPACT
     ) {
         return $this->get(

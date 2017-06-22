@@ -6,8 +6,8 @@ namespace AlphaVantage;
  * Class Client
  * @package AlphaVantage
  *
- * @method Api\GlobalQuote globalquote
- * @method Api\TimeSeries timeseries
+ * @method Api\GlobalQuote globalQuote
+ * @method Api\TimeSeries timeSeries
  * @method Api\Indicators indicators
  */
 class Client
