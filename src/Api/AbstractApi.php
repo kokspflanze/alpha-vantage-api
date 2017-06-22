@@ -30,7 +30,7 @@ class AbstractApi
      * @param array $params
      * @return array
      */
-    protected function get(string $functionName, string $symbolName = null, $exchangeName = null, array $params = [])
+    protected function get(string $functionName, string $symbolName = null, string $exchangeName = null, array $params = [])
     {
         unset($params['functions'], $params['functions'], $params['apikey']);
 
