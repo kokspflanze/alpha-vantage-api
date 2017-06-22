@@ -9,6 +9,7 @@ namespace AlphaVantage;
  * @method Api\GlobalQuote globalQuote
  * @method Api\TimeSeries timeSeries
  * @method Api\Indicators indicators
+ * @method Api\Performance performance
  */
 class Client
 {
@@ -42,6 +43,9 @@ class Client
                 break;
             case 'indicators' :
                 $api = new Api\Indicators($this->options);
+                break;
+            case 'performance' :
+                $api = new Api\Performance($this->options);
                 break;
 
             default:
