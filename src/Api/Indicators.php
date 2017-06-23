@@ -23,6 +23,30 @@ use AlphaVantage\Exception\BadMethodCallException;
  * @method array rocr(string $symbolName, string $exchangeName, string $interval, int $timePeriod, string $seriesType)
  * @method array trix(string $symbolName, string $exchangeName, string $interval, int $timePeriod, string $seriesType)
  * @method array midpoint(string $symbolName, string $exchangeName, string $interval, int $timePeriod, string $seriesType)
+ * @method array willr(string $symbolName, string $exchangeName, string $interval, int $timePeriod)
+ * @method array adx(string $symbolName, string $exchangeName, string $interval, int $timePeriod)
+ * @method array adxr(string $symbolName, string $exchangeName, string $interval, int $timePeriod)
+ * @method array cci(string $symbolName, string $exchangeName, string $interval, int $timePeriod)
+ * @method array aroon(string $symbolName, string $exchangeName, string $interval, int $timePeriod)
+ * @method array aroonosc(string $symbolName, string $exchangeName, string $interval, int $timePeriod)
+ * @method array mfi(string $symbolName, string $exchangeName, string $interval, int $timePeriod)
+ * @method array dx(string $symbolName, string $exchangeName, string $interval, int $timePeriod)
+ * @method array minusDi(string $symbolName, string $exchangeName, string $interval, int $timePeriod)
+ * @method array plusDi(string $symbolName, string $exchangeName, string $interval, int $timePeriod)
+ * @method array minusDm(string $symbolName, string $exchangeName, string $interval, int $timePeriod)
+ * @method array midprice(string $symbolName, string $exchangeName, string $interval, int $timePeriod)
+ * @method array atr(string $symbolName, string $exchangeName, string $interval, int $timePeriod)
+ * @method array natr(string $symbolName, string $exchangeName, string $interval, int $timePeriod)
+ * @method array bop(string $symbolName, string $exchangeName, string $interval)
+ * @method array trange(string $symbolName, string $exchangeName, string $interval)
+ * @method array ad(string $symbolName, string $exchangeName, string $interval)
+ * @method array obv(string $symbolName, string $exchangeName, string $interval)
+ * @method array htTrendline(string $symbolName, string $exchangeName, string $interval, string $seriesType)
+ * @method array htSine(string $symbolName, string $exchangeName, string $interval, string $seriesType)
+ * @method array htTrendmode(string $symbolName, string $exchangeName, string $interval, string $seriesType)
+ * @method array htDcPeriod(string $symbolName, string $exchangeName, string $interval, string $seriesType)
+ * @method array htDcPhase(string $symbolName, string $exchangeName, string $interval, string $seriesType)
+ * @method array htPhasor(string $symbolName, string $exchangeName, string $interval, string $seriesType)
  */
 class Indicators extends AbstractApi
 {
@@ -51,6 +75,7 @@ class Indicators extends AbstractApi
     public function __call($name, $arguments)
     {
         $name = strtolower($name);
+
         switch ($name) {
             case 'sma':
             case 'ema':
@@ -62,13 +87,76 @@ class Indicators extends AbstractApi
             case 't3':
             case 'rsi':
             case 'mom':
-            case 'smo':
+            case 'cmo':
             case 'roc':
             case 'rocr':
             case 'trix':
             case 'midpoint':
                 $result = call_user_func_array([$this, 'basic'], array_merge([$name], $arguments));
                 break;
+
+            case 'willr':
+            case 'adx':
+            case 'adxr':
+            case 'cci':
+            case 'aroon':
+            case 'aroonosc':
+            case 'mfi':
+            case 'dx':
+            case 'midprice':
+            case 'atr':
+            case 'natr':
+                $result = call_user_func_array([$this, 'basicTimePeriod'], array_merge([$name], $arguments));
+                break;
+
+            case 'minusdi':
+                $result = call_user_func_array([$this, 'basicTimePeriod'], array_merge(['minus_di'], $arguments));
+                break;
+
+            case 'plusdi':
+                $result = call_user_func_array([$this, 'basicTimePeriod'], array_merge(['plus_di'], $arguments));
+                break;
+
+            case 'minusdm':
+                $result = call_user_func_array([$this, 'basicTimePeriod'], array_merge(['minus_dm'], $arguments));
+                break;
+
+            case 'plusdm':
+                $result = call_user_func_array([$this, 'basicTimePeriod'], array_merge(['plus_dm'], $arguments));
+                break;
+
+            case 'bop':
+            case 'trange':
+            case 'ad':
+            case 'obv':
+                $result = call_user_func_array([$this, 'basicInterval'], array_merge([$name], $arguments));
+                break;
+
+            case 'httrendline':
+                $result = call_user_func_array([$this, 'basicSeriesType'], array_merge(['ht_trendline'], $arguments));
+                break;
+
+            case 'htsine':
+                $result = call_user_func_array([$this, 'basicSeriesType'], array_merge(['ht_sine'], $arguments));
+                break;
+
+            case 'httrendmode':
+                $result = call_user_func_array([$this, 'basicSeriesType'], array_merge(['ht_trendmode'], $arguments));
+                break;
+
+            case 'htdcperiod':
+                $result = call_user_func_array([$this, 'basicSeriesType'], array_merge(['ht_dcperiod'], $arguments));
+                break;
+
+            case 'htphasor':
+                $result = call_user_func_array([$this, 'basicSeriesType'], array_merge(['ht_phasor'], $arguments));
+                break;
+
+            case 'htdcphase':
+                $result = call_user_func_array([$this, 'basicSeriesType'], array_merge(['ht_dcphase'], $arguments));
+                break;
+
+
 
             default:
                 throw new BadMethodCallException(
@@ -77,35 +165,6 @@ class Indicators extends AbstractApi
         }
 
         return $result;
-    }
-
-
-    /**
-     * @param string $symbolName
-     * @param string $exchangeName
-     * @param string $interval
-     * @param int $timePeriod
-     * @param string $seriesType
-     * @return array
-     */
-    protected function basic(
-        string $name,
-        string $symbolName,
-        string $exchangeName,
-        string $interval,
-        int $timePeriod,
-        string $seriesType
-    ) {
-        return $this->get(
-            strtoupper($name),
-            $symbolName,
-            $exchangeName,
-            [
-                'interval' => $interval,
-                'time_period' => $timePeriod,
-                'series_type' => $seriesType,
-            ]
-        );
     }
 
     /**
@@ -140,4 +199,277 @@ class Indicators extends AbstractApi
             ]
         );
     }
+
+    /**
+     * @param string $symbolName
+     * @param string $exchangeName
+     * @param string $interval
+     * @param string $seriesType
+     * @param int $fastPeriod
+     * @param int $slowPeriod
+     * @param int $signalPeriod
+     * @return array
+     */
+    public function macd(
+        string $symbolName,
+        string $exchangeName,
+        string $interval,
+        string $seriesType,
+        int $fastPeriod = 12,
+        int $slowPeriod = 26,
+        int $signalPeriod = 9
+    ) {
+        return $this->get(
+            'MACD',
+            $symbolName,
+            $exchangeName,
+            [
+                'interval' => $interval,
+                'series_type' => $seriesType,
+                'fastperiod' => $fastPeriod,
+                'slowperiod' => $slowPeriod,
+                'signalperiod' => $signalPeriod,
+            ]
+        );
+    }
+
+    /**
+     * @param string $symbolName
+     * @param string $exchangeName
+     * @param string $interval
+     * @param string $seriesType
+     * @param int $fastPeriod
+     * @param int $slowPeriod
+     * @param int $signalPeriod
+     * @return array
+     */
+    public function macdext(
+        string $symbolName,
+        string $exchangeName,
+        string $interval,
+        string $seriesType,
+        int $fastPeriod = 12,
+        int $slowPeriod = 26,
+        int $signalPeriod = 9,
+        int $fastMaType = 0,
+        int $slowMaType = 0,
+        int $signalMaType = 0
+    ) {
+        return $this->get(
+            'MACDEXT',
+            $symbolName,
+            $exchangeName,
+            [
+                'interval' => $interval,
+                'series_type' => $seriesType,
+                'fastperiod' => $fastPeriod,
+                'slowperiod' => $slowPeriod,
+                'signalperiod' => $signalPeriod,
+                'fastmatype' => $fastMaType,
+                'slowmatype' => $slowMaType,
+                'signalmatype' => $signalMaType,
+            ]
+        );
+    }
+
+    /**
+     * @param string $symbolName
+     * @param string $exchangeName
+     * @param string $interval
+     * @param int $fastKPeriod
+     * @param int $slowKPeriod
+     * @param int $slowDPeriod
+     * @param int $slowKmaType
+     * @param int $slowDmaType
+     * @return array
+     */
+    public function stoch(
+        string $symbolName,
+        string $exchangeName,
+        string $interval,
+        int $fastKPeriod = 5,
+        int $slowKPeriod = 3,
+        int $slowDPeriod = 3,
+        int $slowKmaType = 0,
+        int $slowDmaType = 0
+    ) {
+        return $this->get(
+            'STOCH',
+            $symbolName,
+            $exchangeName,
+            [
+                'interval' => $interval,
+                'fastkperiod' => $fastKPeriod,
+                'slowkperiod' => $slowKPeriod,
+                'slowdperiod' => $slowDPeriod,
+                'slowkmatype' => $slowKmaType,
+                'slowdmatype' => $slowDmaType,
+            ]
+        );
+    }
+
+    /**
+     * @param string $symbolName
+     * @param string $exchangeName
+     * @param string $interval
+     * @param int $fastKPeriod
+     * @param int $fastDPeriod
+     * @param int $fastDmaPeriod
+     * @return array
+     */
+    public function stochf(
+        string $symbolName,
+        string $exchangeName,
+        string $interval,
+        int $fastKPeriod = 5,
+        int $fastDPeriod = 3,
+        int $fastDmaPeriod = 0
+    ) {
+        return $this->get(
+            'STOCHF',
+            $symbolName,
+            $exchangeName,
+            [
+                'interval' => $interval,
+                'fastkperiod' => $fastKPeriod,
+                'fastdperiod' => $fastDPeriod,
+                'fastdmatype' => $fastDmaPeriod,
+            ]
+        );
+    }
+
+    /**
+     * @param string $symbolName
+     * @param string $exchangeName
+     * @param string $interval
+     * @param int $fastKPeriod
+     * @param int $fastDPeriod
+     * @param int $fastDmaPeriod
+     * @return array
+     */
+    public function stochrsi(
+        string $symbolName,
+        string $exchangeName,
+        string $interval,
+        int $timePeriod,
+        string $seriesType,
+        int $fastKPeriod = 5,
+        int $fastDPeriod = 3,
+        int $fastDmaPeriod = 0
+    ) {
+        return $this->get(
+            'STOCHRSI',
+            $symbolName,
+            $exchangeName,
+            [
+                'interval' => $interval,
+                'time_period' => $timePeriod,
+                'series_type' => $seriesType,
+                'fastkperiod' => $fastKPeriod,
+                'fastdperiod' => $fastDPeriod,
+                'fastdmatype' => $fastDmaPeriod,
+            ]
+        );
+    }
+
+    /**
+     * @param string $symbolName
+     * @param string $exchangeName
+     * @param string $interval
+     * @param int $timePeriod
+     * @param string $seriesType
+     * @return array
+     */
+    protected function basic(
+        string $name,
+        string $symbolName,
+        string $exchangeName,
+        string $interval,
+        int $timePeriod,
+        string $seriesType
+    ) {
+        return $this->get(
+            strtoupper($name),
+            $symbolName,
+            $exchangeName,
+            [
+                'interval' => $interval,
+                'time_period' => $timePeriod,
+                'series_type' => $seriesType,
+            ]
+        );
+    }
+
+    /**
+     * @param string $symbolName
+     * @param string $exchangeName
+     * @param string $interval
+     * @param int $timePeriod
+     * @return array
+     */
+    protected function basicTimePeriod(
+        string $name,
+        string $symbolName,
+        string $exchangeName,
+        string $interval,
+        int $timePeriod
+    ) {
+        return $this->get(
+            strtoupper($name),
+            $symbolName,
+            $exchangeName,
+            [
+                'interval' => $interval,
+                'time_period' => $timePeriod,
+            ]
+        );
+    }
+
+    /**
+     * @param string $symbolName
+     * @param string $exchangeName
+     * @param string $interval
+     * @param string $seriesType
+     * @return array
+     */
+    protected function basicSeriesType(
+        string $name,
+        string $symbolName,
+        string $exchangeName,
+        string $interval,
+        string $seriesType
+    ) {
+        return $this->get(
+            strtoupper($name),
+            $symbolName,
+            $exchangeName,
+            [
+                'interval' => $interval,
+                'series_type' => $seriesType,
+            ]
+        );
+    }
+
+    /**
+     * @param string $symbolName
+     * @param string $exchangeName
+     * @param string $interval
+     * @return array
+     */
+    protected function basicInterval(
+        string $name,
+        string $symbolName,
+        string $exchangeName,
+        string $interval
+    ) {
+        return $this->get(
+            strtoupper($name),
+            $symbolName,
+            $exchangeName,
+            [
+                'interval' => $interval,
+            ]
+        );
+    }
+
 }
