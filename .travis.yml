@@ -1,0 +1,59 @@
+sudo: false
+
+language: php
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+    - vendor
+
+env:
+  global:
+    - COMPOSER_ARGS="--no-interaction"
+    - COVERAGE_DEPS="satooshi/php-coveralls"
+
+matrix:
+  fast_finish: true
+  include:
+    - php: 7
+      env:
+        - DEPS=lowest
+    - php: 7
+      env:
+        - DEPS=locked
+    - php: 7
+      env:
+        - DEPS=latest
+    - php: 7.1
+      env:
+        - DEPS=lowest
+    - php: 7.1
+      env:
+        - DEPS=locked
+    - php: 7.1
+      env:
+        - DEPS=latest
+    - php: nightly
+      env:
+        - DEPS=lowest
+    - php: nightly
+      env:
+        - DEPS=locked
+    - php: nightly
+      env:
+        - DEPS=latest
+  allow_failures:
+    - php: nightly
+
+before_install:
+  - travis_retry composer self-update
+
+install:
+  - travis_retry composer install $COMPOSER_ARGS
+  - if [[ $DEPS == 'latest' ]]; then travis_retry composer update $COMPOSER_ARGS ; fi
+  - if [[ $DEPS == 'lowest' ]]; then travis_retry composer update --prefer-lowest --prefer-stable $COMPOSER_ARGS ; fi
+  - if [[ $TEST_COVERAGE == 'true' ]]; then travis_retry composer require --dev $COMPOSER_ARGS $COVERAGE_DEPS ; fi
+  - composer show
+
+script:
+  - composer test
