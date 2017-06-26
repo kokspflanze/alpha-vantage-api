@@ -18,7 +18,7 @@ use AlphaVantage\Exception\BadMethodCallException;
  * @method array t3(string $symbolName, string $exchangeName, string $interval, int $timePeriod, string $seriesType)
  * @method array rsi(string $symbolName, string $exchangeName, string $interval, int $timePeriod, string $seriesType)
  * @method array mom(string $symbolName, string $exchangeName, string $interval, int $timePeriod, string $seriesType)
- * @method array smo(string $symbolName, string $exchangeName, string $interval, int $timePeriod, string $seriesType)
+ * @method array cmo(string $symbolName, string $exchangeName, string $interval, int $timePeriod, string $seriesType)
  * @method array roc(string $symbolName, string $exchangeName, string $interval, int $timePeriod, string $seriesType)
  * @method array rocr(string $symbolName, string $exchangeName, string $interval, int $timePeriod, string $seriesType)
  * @method array trix(string $symbolName, string $exchangeName, string $interval, int $timePeriod, string $seriesType)
@@ -368,6 +368,189 @@ class Indicators extends AbstractApi
                 'fastkperiod' => $fastKPeriod,
                 'fastdperiod' => $fastDPeriod,
                 'fastdmatype' => $fastDmaPeriod,
+            ]
+        );
+    }
+
+    /**
+     * @param string $symbolName
+     * @param string $exchangeName
+     * @param string $interval
+     * @param int $fastPeriod
+     * @param int $slowPeriod
+     * @param int $maType
+     * @return array
+     */
+    public function apo(
+        string $symbolName,
+        string $exchangeName,
+        string $interval,
+        string $seriesType,
+        int $fastPeriod = 12,
+        int $slowPeriod = 26,
+        int $maType = 0
+    ) {
+        return $this->get(
+            'APO',
+            $symbolName,
+            $exchangeName,
+            [
+                'interval' => $interval,
+                'series_type' => $seriesType,
+                'fastperiod' => $fastPeriod,
+                'slowperiod' => $slowPeriod,
+                'matype' => $maType,
+            ]
+        );
+    }
+
+    /**
+     * @param string $symbolName
+     * @param string $exchangeName
+     * @param string $interval
+     * @param int $fastPeriod
+     * @param int $slowPeriod
+     * @param int $maType
+     * @return array
+     */
+    public function ppo(
+        string $symbolName,
+        string $exchangeName,
+        string $interval,
+        string $seriesType,
+        int $fastPeriod = 12,
+        int $slowPeriod = 26,
+        int $maType = 0
+    ) {
+        return $this->get(
+            'PPO',
+            $symbolName,
+            $exchangeName,
+            [
+                'interval' => $interval,
+                'series_type' => $seriesType,
+                'fastperiod' => $fastPeriod,
+                'slowperiod' => $slowPeriod,
+                'matype' => $maType,
+            ]
+        );
+    }
+
+    /**
+     * @param string $symbolName
+     * @param string $exchangeName
+     * @param string $interval
+     * @param int $timePeriod2
+     * @param int $timePeriod3
+     * @return array
+     */
+    public function ultosc(
+        string $symbolName,
+        string $exchangeName,
+        string $interval,
+        int $timePeriod1 = 7,
+        int $timePeriod2 = 14,
+        int $timePeriod3 = 28
+    ) {
+        return $this->get(
+            'ULTOSC',
+            $symbolName,
+            $exchangeName,
+            [
+                'interval' => $interval,
+                'timeperiod1' => $timePeriod1,
+                'timeperiod2' => $timePeriod2,
+                'timeperiod3' => $timePeriod3,
+            ]
+        );
+    }
+
+    /**
+     * @param string $symbolName
+     * @param string $exchangeName
+     * @param string $interval
+     * @param int $timePeriod
+     * @param string $seriesType
+     * @param int $nbdevup
+     * @param int $nbdevdn
+     * @param int $maType
+     * @return array
+     */
+    public function bbands(
+        string $symbolName,
+        string $exchangeName,
+        string $interval,
+        int $timePeriod,
+        string $seriesType,
+        int $nbdevup = 2,
+        int $nbdevdn = 2,
+        int $maType = 0
+    ) {
+        return $this->get(
+            'BBANDS',
+            $symbolName,
+            $exchangeName,
+            [
+                'interval' => $interval,
+                'time_period' => $timePeriod,
+                'series_type' => $seriesType,
+                'nbdevup' => $nbdevup,
+                'nbdevdn' => $nbdevdn,
+                'matype' => $maType,
+            ]
+        );
+    }
+
+    /**
+     * @param string $symbolName
+     * @param string $exchangeName
+     * @param string $interval
+     * @param float $acceleration
+     * @param float $maximum
+     * @return array
+     */
+    public function sar(
+        string $symbolName,
+        string $exchangeName,
+        string $interval,
+        float $acceleration = 0.01,
+        float $maximum = 0.20
+    ) {
+        return $this->get(
+            'SAR',
+            $symbolName,
+            $exchangeName,
+            [
+                'interval' => $interval,
+                'acceleration' => $acceleration,
+                'maximum' => $maximum,
+            ]
+        );
+    }
+
+    /**
+     * @param string $symbolName
+     * @param string $exchangeName
+     * @param string $interval
+     * @param int $fastPeriod
+     * @param int $slowPeriod
+     * @return array
+     */
+    public function adosc(
+        string $symbolName,
+        string $exchangeName,
+        string $interval,
+        int $fastPeriod = 3,
+        int $slowPeriod = 10
+    ) {
+        return $this->get(
+            'ADOSC',
+            $symbolName,
+            $exchangeName,
+            [
+                'interval' => $interval,
+                'fastperiod' => $fastPeriod,
+                'slowperiod' => $slowPeriod,
             ]
         );
     }
