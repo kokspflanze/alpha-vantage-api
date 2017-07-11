@@ -12,7 +12,7 @@ class Options
     protected $apiKey = '';
 
     /** @var string */
-    protected $apiUrl = 'http://www.alphavantage.co/';
+    protected $apiUrl = 'https://www.alphavantage.co/';
 
     /**
      * @return string
