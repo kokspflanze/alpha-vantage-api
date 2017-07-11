@@ -11,6 +11,9 @@ class TimeSeries extends AbstractApi
     const OUTPUT_TYPE_COMPACT = 'compact';
     const OUTPUT_TYPE_FULL = 'full';
 
+    const DATA_TYPE_JSON = 'json';
+    const DATA_TYPE_CSV = 'csv';
+
     const INTERVAL_1 = '1min';
     const INTERVAL_5 = '5min';
     const INTERVAL_15 = '15min';
@@ -22,13 +25,15 @@ class TimeSeries extends AbstractApi
      * @param string $exchangeName
      * @param string $interval
      * @param string $outputType
+     * @param string $dataType
      * @return array
      */
     public function intraday(
         string $symbolName,
         string $exchangeName,
         string $interval,
-        string $outputType = self::OUTPUT_TYPE_COMPACT
+        string $outputType = self::OUTPUT_TYPE_COMPACT,
+        string $dataType = self::DATA_TYPE_JSON
     ) {
         return $this->get(
             'TIME_SERIES_INTRADAY',
@@ -37,6 +42,7 @@ class TimeSeries extends AbstractApi
             [
                 'interval' => $interval,
                 'outputsize' => $outputType,
+                'datatype' => $dataType,
             ]
         );
     }
@@ -50,7 +56,8 @@ class TimeSeries extends AbstractApi
     public function daily(
         string $symbolName,
         string $exchangeName,
-        string $outputType = self::OUTPUT_TYPE_COMPACT
+        string $outputType = self::OUTPUT_TYPE_COMPACT,
+        string $dataType = self::DATA_TYPE_JSON
     ) {
         return $this->get(
             'TIME_SERIES_DAILY',
@@ -58,6 +65,7 @@ class TimeSeries extends AbstractApi
             $exchangeName,
             [
                 'outputsize' => $outputType,
+                'datatype' => $dataType,
             ]
         );
     }
@@ -71,7 +79,8 @@ class TimeSeries extends AbstractApi
     public function dailyAdjusted(
         string $symbolName,
         string $exchangeName,
-        string $outputType = self::OUTPUT_TYPE_COMPACT
+        string $outputType = self::OUTPUT_TYPE_COMPACT,
+        string $dataType = self::DATA_TYPE_JSON
     ) {
         return $this->get(
             'TIME_SERIES_DAILY_ADJUSTED',
@@ -79,6 +88,7 @@ class TimeSeries extends AbstractApi
             $exchangeName,
             [
                 'outputsize' => $outputType,
+                'datatype' => $dataType,
             ]
         );
     }
@@ -90,12 +100,36 @@ class TimeSeries extends AbstractApi
      */
     public function weekly(
         string $symbolName,
-        string $exchangeName
+        string $exchangeName,
+        string $dataType = self::DATA_TYPE_JSON
     ) {
         return $this->get(
             'TIME_SERIES_WEEKLY',
             $symbolName,
-            $exchangeName
+            $exchangeName,
+            [
+                'datatype' => $dataType,
+            ]
+        );
+    }
+
+    /**
+     * @param string $symbolName
+     * @param string $exchangeName
+     * @return array
+     */
+    public function monthly(
+        string $symbolName,
+        string $exchangeName,
+        string $dataType = self::DATA_TYPE_JSON
+    ) {
+        return $this->get(
+            'TIME_SERIES_MONTHLY',
+            $symbolName,
+            $exchangeName,
+            [
+                'datatype' => $dataType,
+            ]
         );
     }
 
