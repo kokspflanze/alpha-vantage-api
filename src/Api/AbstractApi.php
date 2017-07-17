@@ -2,6 +2,7 @@
 
 namespace AlphaVantage\Api;
 
+use AlphaVantage\Exception\RuntimeException;
 use AlphaVantage\Options;
 use GuzzleHttp\Client;
 
@@ -51,7 +52,13 @@ class AbstractApi
         $httpClient = new Client();
         $response = $httpClient->get($this->getApiUri() . $httpQuery);
 
-        return \GuzzleHttp\json_decode($response->getBody()->getContents(), true);
+        $result = \GuzzleHttp\json_decode($response->getBody()->getContents(), true);
+
+        if (isset($result['Error Message'])) {
+            throw new RuntimeException($result['Error Message']);
+        }
+
+        return $result;
     }
 
     /**
@@ -59,7 +66,7 @@ class AbstractApi
      */
     protected function getApiUri(): string
     {
-        return $this->options->getApiUrl() . '/query?';
+        return rtrim($this->options->getApiUrl(), '/') . '/query?';
     }
 
 }
