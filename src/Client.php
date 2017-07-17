@@ -6,7 +6,6 @@ namespace AlphaVantage;
  * Class Client
  * @package AlphaVantage
  *
- * @method Api\GlobalQuote globalQuote
  * @method Api\TimeSeries timeSeries
  * @method Api\Indicators indicators
  * @method Api\Performance performance
@@ -35,9 +34,6 @@ class Client
         $name = $this->getApiName($name);
 
         switch ($name) {
-            case 'globalquote' :
-                $api = new Api\GlobalQuote($this->options);
-                break;
             case 'timeseries' :
                 $api = new Api\TimeSeries($this->options);
                 break;

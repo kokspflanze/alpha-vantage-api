@@ -2,13 +2,13 @@
 
 namespace AlphaVantageTest\Api;
 
-use AlphaVantage\Api\GlobalQuote;
+use AlphaVantage\Api\Performance;
 
-class GlobalQuoteTest extends TestCase
+class PerformanceTest extends TestCase
 {
     public function testGetGlobalQuote()
     {
-        $actual = (new GlobalQuote($this->option))->getGlobalQuote($this->symbol, $this->exchange);
+        $actual = (new Performance($this->option))->section();
 
         $this->assertNotEmpty($actual);
         $this->assertInternalType('array', $actual);

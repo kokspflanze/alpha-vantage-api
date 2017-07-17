@@ -26,7 +26,7 @@ class ClientTest extends TestCase
     public function testMagicCall()
     {
         $client = new Client(new Options());
-        $actual = $client->globalquote();
+        $actual = $client->timeseries();
 
         $this->assertInstanceOf(AbstractApi::class, $actual);
     }
@@ -35,7 +35,7 @@ class ClientTest extends TestCase
     public function testMagicCallCaseNotMatch()
     {
         $client = new Client(new Options());
-        $actual = $client->global_QuOte();
+        $actual = $client->time_Series();
 
         $this->assertInstanceOf(AbstractApi::class, $actual);
     }
