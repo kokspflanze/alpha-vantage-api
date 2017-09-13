@@ -34,6 +34,7 @@ use AlphaVantage\Exception\BadMethodCallException;
  * @method array minusDi(string $symbolName, string $exchangeName, string $interval, int $timePeriod)
  * @method array plusDi(string $symbolName, string $exchangeName, string $interval, int $timePeriod)
  * @method array minusDm(string $symbolName, string $exchangeName, string $interval, int $timePeriod)
+ * @method array plusDm(string $symbolName, string $exchangeName, string $interval, int $timePeriod)
  * @method array midprice(string $symbolName, string $exchangeName, string $interval, int $timePeriod)
  * @method array atr(string $symbolName, string $exchangeName, string $interval, int $timePeriod)
  * @method array natr(string $symbolName, string $exchangeName, string $interval, int $timePeriod)
