@@ -45,11 +45,10 @@ class AbstractApi
      */
     protected function get(string $functionName, string $symbolName = null, array $params = [])
     {
-        unset($params['functions'], $params['apikey']);
+        unset($params['functions'], $params['function'], $params['apikey']);
 
         $basicData = [
             'function' => $functionName,
-            'apikey' => $this->options->getApiKey(),
         ];
 
         if (null !== $symbolName) {
@@ -59,7 +58,10 @@ class AbstractApi
         $httpQuery = http_build_query(
             array_merge(
                 $basicData,
-                $params
+                $params,
+                [
+                    'apikey' => $this->options->getApiKey(),
+                ]
             )
         );
 

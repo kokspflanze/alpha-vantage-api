@@ -12,8 +12,6 @@ class TestCase extends \AlphaVantageTest\TestCase
     protected $option;
     /** @var string */
     protected $symbol = 'MSFT';
-    /** @var string */
-    protected $exchange = 'NASDAQ';
 
     protected function setUp()
     {
