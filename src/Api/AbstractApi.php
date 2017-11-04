@@ -40,11 +40,10 @@ class AbstractApi
     /**
      * @param string $functionName
      * @param null|string $symbolName
-     * @param null|string $exchangeName
      * @param array $params
      * @return array
      */
-    protected function get(string $functionName, string $symbolName = null, string $exchangeName = null, array $params = [])
+    protected function get(string $functionName, string $symbolName = null, array $params = [])
     {
         unset($params['functions'], $params['apikey']);
 
@@ -54,7 +53,7 @@ class AbstractApi
         ];
 
         if (null !== $symbolName) {
-            $basicData['symbol'] = sprintf('%s:%s', $exchangeName?: 'NASDAQ', $symbolName);
+            $basicData['symbol'] = $symbolName;
         }
 
         $httpQuery = http_build_query(

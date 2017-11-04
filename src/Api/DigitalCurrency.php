@@ -14,10 +14,8 @@ class DigitalCurrency extends AbstractApi
     {
         return $this->get(
             'DIGITAL_CURRENCY_INTRADAY',
-            null,
-            null,
+            $symbol,
             [
-                'symbol' => $symbol,
                 'market' => $market,
                 'datatype' => $dataType,
             ]
@@ -34,10 +32,8 @@ class DigitalCurrency extends AbstractApi
     {
         return $this->get(
             'DIGITAL_CURRENCY_DAILY',
-            null,
-            null,
+            $symbol,
             [
-                'symbol' => $symbol,
                 'market' => $market,
                 'datatype' => $dataType,
             ]
@@ -54,10 +50,8 @@ class DigitalCurrency extends AbstractApi
     {
         return $this->get(
             'DIGITAL_CURRENCY_WEEKLY',
-            null,
-            null,
+            $symbol,
             [
-                'symbol' => $symbol,
                 'market' => $market,
                 'datatype' => $dataType,
             ]
@@ -74,10 +68,8 @@ class DigitalCurrency extends AbstractApi
     {
         return $this->get(
             'DIGITAL_CURRENCY_MONTHLY',
-            null,
-            null,
+            $symbol,
             [
-                'symbol' => $symbol,
                 'market' => $market,
                 'datatype' => $dataType,
             ]

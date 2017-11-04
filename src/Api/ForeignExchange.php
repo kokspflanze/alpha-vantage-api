@@ -14,7 +14,6 @@ class ForeignExchange extends AbstractApi
         return $this->get(
             'CURRENCY_EXCHANGE_RATE',
             null,
-            null,
             [
                 'from_currency' => $fromCurrency,
                 'to_currency' => $toCurrency,
