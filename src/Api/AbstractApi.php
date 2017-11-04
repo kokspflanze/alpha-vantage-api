@@ -6,6 +6,12 @@ use AlphaVantage\Exception\RuntimeException;
 use AlphaVantage\Options;
 use GuzzleHttp\Client;
 
+use function GuzzleHttp\json_decode;
+use function http_build_query;
+use function sprintf;
+use function array_merge;
+use function rtrim;
+
 /**
  * Class AbstractApi
  * @package AlphaVantage\Api
@@ -37,7 +43,7 @@ class AbstractApi
      */
     protected function get(string $functionName, string $symbolName = null, string $exchangeName = null, array $params = [])
     {
-        unset($params['functions'], $params['functions'], $params['apikey']);
+        unset($params['functions'], $params['apikey']);
 
         $basicData = [
             'function' => $functionName,
@@ -48,14 +54,16 @@ class AbstractApi
             $basicData['symbol'] = sprintf('%s:%s', $exchangeName?: 'NASDAQ', $symbolName);
         }
 
-        $httpQuery = http_build_query(array_merge(
-            $basicData,
-            $params
-        ));
+        $httpQuery = http_build_query(
+            array_merge(
+                $basicData,
+                $params
+            )
+        );
 
         $response = $this->client->get($this->getApiUri() . $httpQuery);
 
-        $result = \GuzzleHttp\json_decode($response->getBody()->getContents(), true);
+        $result = json_decode($response->getBody()->getContents(), true);
 
         if (isset($result['Error Message'])) {
             throw new RuntimeException($result['Error Message']);
