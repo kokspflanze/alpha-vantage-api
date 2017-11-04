@@ -110,7 +110,6 @@ class AbstractApiTest extends TestCase
             );
     }
 
-
     public function testGetInformationMessage()
     {
         $httpClient = $this->getMockBuilder(Client::class)

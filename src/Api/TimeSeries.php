@@ -11,9 +11,6 @@ class TimeSeries extends AbstractApi
     const OUTPUT_TYPE_COMPACT = 'compact';
     const OUTPUT_TYPE_FULL = 'full';
 
-    const DATA_TYPE_JSON = 'json';
-    const DATA_TYPE_CSV = 'csv';
-
     const INTERVAL_1 = '1min';
     const INTERVAL_5 = '5min';
     const INTERVAL_15 = '15min';
