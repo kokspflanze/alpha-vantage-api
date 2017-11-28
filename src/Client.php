@@ -45,10 +45,10 @@ class Client
             case 'performance' :
                 $api = new Api\Performance($this->options);
                 break;
-            case 'foreignExchange' :
+            case 'foreignexchange' :
                 $api = new Api\ForeignExchange($this->options);
                 break;
-            case 'digitalCurrency' :
+            case 'digitalcurrency' :
                 $api = new Api\DigitalCurrency($this->options);
                 break;
 

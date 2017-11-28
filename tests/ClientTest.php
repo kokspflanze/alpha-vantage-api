@@ -31,6 +31,14 @@ class ClientTest extends TestCase
         $this->assertInstanceOf(AbstractApi::class, $actual);
     }
 
+    public function testMagicCallUpperCase()
+    {
+        $client = new Client(new Options());
+        $actual = $client->foreignExchange();
+
+        $this->assertInstanceOf(AbstractApi::class, $actual);
+    }
+
 
     public function testMagicCallCaseNotMatch()
     {
