@@ -44,6 +44,8 @@ class TimeSeries extends AbstractApi
     /**
      * @param string $symbolName
      * @param string $outputType
+     * @param string $dataType
+     *
      * @return array
      */
     public function daily(
@@ -64,6 +66,8 @@ class TimeSeries extends AbstractApi
     /**
      * @param string $symbolName
      * @param string $outputType
+     * @param string $dataType
+     *
      * @return array
      */
     public function dailyAdjusted(
@@ -83,6 +87,8 @@ class TimeSeries extends AbstractApi
 
     /**
      * @param string $symbolName
+     * @param string $dataType
+     *
      * @return array
      */
     public function weekly(
@@ -101,6 +107,8 @@ class TimeSeries extends AbstractApi
     /**
      * @param string $symbolName
      * @param string $outputType
+     * @param string $dataType
+     *
      * @return array
      */
     public function weeklyAdjusted(
@@ -121,6 +129,7 @@ class TimeSeries extends AbstractApi
     /**
      * @param string $symbolName
      * @param string $dataType
+     *
      * @return array
      */
     public function monthly(
@@ -140,6 +149,7 @@ class TimeSeries extends AbstractApi
      * @param string $symbolName
      * @param string $outputType
      * @param string $dataType
+     *
      * @return array
      */
     public function monthlyAdjusted(
@@ -156,6 +166,4 @@ class TimeSeries extends AbstractApi
             ]
         );
     }
-
-
 }
