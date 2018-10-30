@@ -20,5 +20,4 @@ class ForeignExchange extends AbstractApi
             ]
         );
     }
-
 }

@@ -75,5 +75,4 @@ class DigitalCurrency extends AbstractApi
             ]
         );
     }
-
 }

@@ -49,5 +49,4 @@ class Options
         $this->apiUrl = $apiUrl;
         return $this;
     }
-
 }

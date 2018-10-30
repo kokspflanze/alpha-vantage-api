@@ -83,5 +83,4 @@ class AbstractApi
     {
         return rtrim($this->options->getApiUrl(), '/') . '/query?';
     }
-
 }
