@@ -6,11 +6,11 @@ namespace AlphaVantage;
  * Class Client
  * @package AlphaVantage
  *
- * @method Api\TimeSeries timeSeries
- * @method Api\Indicators indicators
- * @method Api\Performance performance
- * @method Api\ForeignExchange foreignExchange
- * @method Api\DigitalCurrency digitalCurrency
+ * @method Api\TimeSeries timeSeries()
+ * @method Api\Indicators indicators()
+ * @method Api\Performance performance()
+ * @method Api\ForeignExchange foreignExchange()
+ * @method Api\DigitalCurrency digitalCurrency()
  */
 class Client
 {
