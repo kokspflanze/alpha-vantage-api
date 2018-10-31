@@ -8,7 +8,6 @@ use GuzzleHttp\Client;
 
 use function GuzzleHttp\json_decode;
 use function http_build_query;
-use function sprintf;
 use function array_merge;
 use function rtrim;
 
