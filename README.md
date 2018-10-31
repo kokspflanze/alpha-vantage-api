@@ -2,11 +2,12 @@
 
 [![Build Status](https://travis-ci.org/kokspflanze/alpha-vantage-api.svg?branch=master)](https://travis-ci.org/kokspflanze/alpha-vantage-api)
 
-The PHP-Client is a lightweight wrapper for the Alpha Vantage API.
+The PHP-Client is a lightweight wrapper for the [Alpha Vantage](https://www.alphavantage.co).
 
 ## Requirements:
 - PHP 7.0+
 - composer (https://getcomposer.org/download/)
+- AlphaVantage Key, that you get @ [AlphaVantage-Api-Key](https://www.alphavantage.co/support/#api-key)
 
 ## Install
 
