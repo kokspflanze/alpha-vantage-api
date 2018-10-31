@@ -113,14 +113,12 @@ class TimeSeries extends AbstractApi
      */
     public function weeklyAdjusted(
         string $symbolName,
-        string $outputType = self::OUTPUT_TYPE_COMPACT,
         string $dataType = self::DATA_TYPE_JSON
     ) {
         return $this->get(
             'TIME_SERIES_WEEKLY_ADJUSTED',
             $symbolName,
             [
-                'outputsize' => $outputType,
                 'datatype' => $dataType,
             ]
         );
@@ -154,14 +152,53 @@ class TimeSeries extends AbstractApi
      */
     public function monthlyAdjusted(
         string $symbolName,
-        string $outputType = self::OUTPUT_TYPE_COMPACT,
         string $dataType = self::DATA_TYPE_JSON
     ) {
         return $this->get(
             'TIME_SERIES_MONTHLY_ADJUSTED',
             $symbolName,
             [
-                'outputsize' => $outputType,
+                'datatype' => $dataType,
+            ]
+        );
+    }
+
+    /**
+     * @param string $symbolName
+     * @param string $dataType
+     *
+     * @return array
+     */
+    public function globalQuote(
+        string $symbolName,
+        string $dataType = self::DATA_TYPE_JSON
+    ) {
+        return $this->get(
+            'GLOBAL_QUOTE',
+            $symbolName,
+            [
+                'datatype' => $dataType,
+            ]
+        );
+    }
+
+    /**
+     * @param string $symbolName
+     * @param string $keywords
+     * @param string $dataType
+     *
+     * @return array
+     */
+    public function symbolSearch(
+        string $symbolName,
+        string $keywords,
+        string $dataType = self::DATA_TYPE_JSON
+    ) {
+        return $this->get(
+            'GLOBAL_QUOTE',
+            $symbolName,
+            [
+                'keywords' => $keywords,
                 'datatype' => $dataType,
             ]
         );
