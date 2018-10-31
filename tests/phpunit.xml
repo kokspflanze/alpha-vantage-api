@@ -8,7 +8,6 @@
         stopOnError="false"
         processIsolation="false"
         backupGlobals="false"
-        syntaxCheck="true"
         >
     <testsuites>
         <testsuite name="AlphaVantageApi component test Suite">
