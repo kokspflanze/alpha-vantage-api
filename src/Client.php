@@ -36,19 +36,19 @@ class Client
         $name = $this->getApiName($name);
 
         switch ($name) {
-            case 'timeseries' :
+            case 'timeseries':
                 $api = new Api\TimeSeries($this->options);
                 break;
-            case 'indicators' :
+            case 'indicators':
                 $api = new Api\Indicators($this->options);
                 break;
-            case 'performance' :
+            case 'performance':
                 $api = new Api\Performance($this->options);
                 break;
-            case 'foreignexchange' :
+            case 'foreignexchange':
                 $api = new Api\ForeignExchange($this->options);
                 break;
-            case 'digitalcurrency' :
+            case 'digitalcurrency':
                 $api = new Api\DigitalCurrency($this->options);
                 break;
 
@@ -85,5 +85,4 @@ class Client
     {
         return strtolower(str_replace(['_', ''], '', $name));
     }
-
 }

@@ -156,6 +156,4 @@ class TimeSeries extends AbstractApi
             ]
         );
     }
-
-
 }
