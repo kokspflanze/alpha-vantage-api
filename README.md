@@ -12,7 +12,7 @@ The PHP-Client is a lightweight wrapper for the [Alpha Vantage](https://www.alph
 ## Install
 
 ```
-php composer.phar require aleksanderslazak/alpha-vantage-api
+php composer.phar require kokspflanze/alpha-vantage-api
 ```
 
 
