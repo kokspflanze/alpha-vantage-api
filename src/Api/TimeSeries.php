@@ -195,7 +195,7 @@ class TimeSeries extends AbstractApi
         string $dataType = self::DATA_TYPE_JSON
     ) {
         return $this->get(
-            'GLOBAL_QUOTE',
+            'SYMBOL_SEARCH',
             $symbolName,
             [
                 'keywords' => $keywords,
