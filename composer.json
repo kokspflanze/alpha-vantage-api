@@ -14,11 +14,6 @@
             "AlphaVantage\\": "src/"
         }
     },
-    "config" : {
-        "platform": {
-            "php" : "7.0"
-        }
-    },
     "autoload-dev": {
         "psr-4": {
             "AlphaVantageTest\\": "tests/"
