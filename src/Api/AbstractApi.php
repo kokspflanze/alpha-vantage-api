@@ -70,6 +70,8 @@ class AbstractApi
 
         if (isset($result['Error Message'])) {
             throw new RuntimeException($result['Error Message']);
+        } elseif(isset($result['Note'])){
+            throw new RuntimeException($result['Note']);
         }
 
         return $result;
