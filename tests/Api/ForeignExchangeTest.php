@@ -13,6 +13,6 @@ class ForeignExchangeTest extends TestCase
         $this->assertCount(1, $actual);
         $this->assertArrayHasKey('Realtime Currency Exchange Rate', $actual);
         $this->assertNotEmpty($actual['Realtime Currency Exchange Rate']);
-        $this->assertCount(7, $actual['Realtime Currency Exchange Rate']);
+        $this->assertCount(9, $actual['Realtime Currency Exchange Rate']);
     }
 }
