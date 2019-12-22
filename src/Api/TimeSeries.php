@@ -183,20 +183,18 @@ class TimeSeries extends AbstractApi
     }
 
     /**
-     * @param string $symbolName
      * @param string $keywords
      * @param string $dataType
      *
      * @return array
      */
     public function symbolSearch(
-        string $symbolName,
         string $keywords,
         string $dataType = self::DATA_TYPE_JSON
     ) {
         return $this->get(
             'SYMBOL_SEARCH',
-            $symbolName,
+            null,
             [
                 'keywords' => $keywords,
                 'datatype' => $dataType,
