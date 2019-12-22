@@ -20,11 +20,11 @@
         }
     },
     "require": {
-        "php": "^7.0",
+        "php": "^7.1",
         "guzzlehttp/guzzle": "^6.3"
     },
     "require-dev": {
-        "phpunit/phpunit": "^6.2.2 || ^7.5.18"
+        "phpunit/phpunit": "^7.5.18"
     },
     "scripts": {
         "test": "phpunit --configuration tests/phpunit.xml --colors=always"

@@ -15,15 +15,6 @@ env:
 matrix:
   fast_finish: true
   include:
-    - php: 7
-      env:
-        - DEPS=lowest
-    - php: 7
-      env:
-        - DEPS=locked
-    - php: 7
-      env:
-        - DEPS=latest
     - php: 7.1
       env:
         - DEPS=lowest
@@ -60,6 +51,11 @@ matrix:
     - php: 7.4
       env:
         - DEPS=latest
+    - php: nightly
+      env:
+        - DEPS=locked
+  allow_failures:
+    - php: nightly
 
 before_install:
   - travis_retry composer self-update
