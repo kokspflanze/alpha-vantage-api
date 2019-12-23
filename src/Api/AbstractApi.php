@@ -69,9 +69,9 @@ class AbstractApi
         $result = json_decode($response->getBody()->getContents(), true);
 
         if (isset($result['Error Message'])) {
-            throw new RuntimeException($result['Error Message']);
+            throw new RuntimeException($result['Error Message'], $response->getStatusCode());
         } elseif (isset($result['Note'])) {
-            throw new RuntimeException($result['Note']);
+            throw new RuntimeException($result['Note'], $response->getStatusCode());
         }
 
         return $result;
