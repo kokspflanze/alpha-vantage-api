@@ -11,6 +11,6 @@ class PerformanceTest extends TestCase
         $actual = (new Performance($this->option))->section();
 
         $this->assertNotEmpty($actual);
-        $this->assertInternalType('array', $actual);
+        $this->assertIsArray($actual);
     }
 }
