@@ -38,7 +38,7 @@ class AbstractApiTest extends TestCase
         $result = $this->getMethod('getApiUri', $this->class)
             ->invokeArgs($this->class, []);
 
-        $this->assertInternalType('string', $result);
+        $this->assertIsString($result);
         $this->assertSame('https://www.alphavantage.co/query?', $result);
     }
 
@@ -85,6 +85,9 @@ class AbstractApiTest extends TestCase
             ['getContents']
         );
         $response->expects($this->exactly(1))
+            ->method('getStatusCode')
+            ->willReturn(505);
+        $response->expects($this->exactly(1))
             ->method('getBody')
             ->willReturn($stream);
         $stream->expects($this->exactly(1))
@@ -99,6 +102,7 @@ class AbstractApiTest extends TestCase
             ->willReturn($response);
 
         $this->expectException(RuntimeException::class);
+        $this->expectExceptionCode(505);
         $this->expectExceptionMessage(
             'the parameter apikey is missing. Please claim your free API key on (https://www.alphavantage.co/support/#api-key). It should take less than 20 seconds, and is free permanently.'
         );
@@ -157,7 +161,7 @@ class AbstractApiTest extends TestCase
                 ]
             );
 
-        $this->assertInternalType('array', $result);
+        $this->assertIsArray($result);
         $this->assertSame(
             [
                 'Information' => 'Please consider optimizing your API call frequency'
