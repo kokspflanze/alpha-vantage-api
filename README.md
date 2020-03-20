@@ -18,9 +18,14 @@ php composer.phar require kokspflanze/alpha-vantage-api
 
 ## How to use it?
 
-```
+```php
+<?php
+
+// Option
 $option = new AlphaVantage\Options();
 $option->setApiKey('YOUR_KEY');
+
+// Client
 $client = new AlphaVantage\Client($option);
 var_dump($client->foreignExchange()->currencyExchangeRate('BTC', 'CNY'));
 ```
