@@ -11,7 +11,7 @@ use Psr\Container\ContainerInterface;
 
 class AlphaVantageFactory
 {
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = null): Client
+    public function __invoke(ContainerInterface $container): Client
     {
         $config      = $container->has('config') ? $container->get('config') : [];
         $options     = $config['alpha_vantage'] ?? [];
