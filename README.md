@@ -29,3 +29,25 @@ $option->setApiKey('YOUR_KEY');
 $client = new AlphaVantage\Client($option);
 var_dump($client->foreignExchange()->currencyExchangeRate('BTC', 'CNY'));
 ```
+
+You can also use it with containers, using the PSR-11 standard:
+
+```php
+return [
+    'dependencies' => [
+        'factories' => [
+            'alphavantage' => \AlphaVantage\Factory\AlphaVantageFactory::class,
+        ],
+    ],
+];
+```
+
+with the following configuration:
+
+```php
+return [
+    'alpha_vantage' => [
+        'api_key' => 'APIKEY',
+    ]
+];
+```
