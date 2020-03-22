@@ -21,11 +21,13 @@
     },
     "require": {
         "php": "^7.1",
-        "guzzlehttp/guzzle": "^6.3",
-        "psr/container": "^1.0.0"
+        "guzzlehttp/guzzle": "^6.3"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.5.18"
+    },
+    "suggest": {
+        "psr/container": "If you want use factories for PSR-11 Containers"
     },
     "scripts": {
         "test": "phpunit --configuration tests/phpunit.xml --colors=always"
