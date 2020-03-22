@@ -16,7 +16,7 @@ class AlphaVantageFactory
         $config      = $container->has('config') ? $container->get('config') : [];
         $options     = $config['alpha_vantage'] ?? [];
         if (! isset($options['api_key'])) {
-            throw new UnexpectedValueException("Missing 'api_key' key for the alpha vantange configuration");
+            throw new UnexpectedValueException("Missing 'api_key' key for the alpha vantage configuration");
         }
 
         $option = new Options();
