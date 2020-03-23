@@ -51,6 +51,7 @@ matrix:
     - php: 7.4
       env:
         - DEPS=latest
+        - EXECUTE_CS_CHECK=true
     - php: nightly
       env:
         - DEPS=locked
@@ -69,3 +70,4 @@ install:
 
 script:
   - composer test
+  - if [[ $EXECUTE_CS_CHECK == 'true' ]]; then ./vendor/bin/phpcs; fi
