@@ -19,8 +19,8 @@ use function rtrim;
  */
 class AbstractApi
 {
-    const DATA_TYPE_JSON = 'json';
-    const DATA_TYPE_CSV = 'csv';
+    public const DATA_TYPE_JSON = 'json';
+    public const DATA_TYPE_CSV = 'csv';
 
     /** @var  Options */
     protected $options;
