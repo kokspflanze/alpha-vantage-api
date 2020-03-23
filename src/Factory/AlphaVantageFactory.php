@@ -22,8 +22,6 @@ class AlphaVantageFactory
         $option = new Options();
         $option->setApiKey($options['api_key']);
 
-        $client = new Client($option);
-
-        return $client;
+        return new Client($option);
     }
 }
