@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AlphaVantageTest\Api;
 
 use AlphaVantage\Api\AbstractApi;
@@ -17,7 +19,8 @@ class AbstractApiTest extends TestCase
     {
         parent::setUp();
         $this->class = $this->getMockForAbstractClass(
-            AbstractApi::class, [],
+            AbstractApi::class,
+            [],
             '',
             false,
             true,
@@ -169,5 +172,4 @@ class AbstractApiTest extends TestCase
             $result
         );
     }
-
 }

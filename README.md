@@ -29,3 +29,35 @@ $option->setApiKey('YOUR_KEY');
 $client = new AlphaVantage\Client($option);
 var_dump($client->foreignExchange()->currencyExchangeRate('BTC', 'CNY'));
 ```
+
+### Factory for PSR-11 Container
+
+You can also use it with containers, using the PSR-11 standard for easy integration in a project.
+
+You need require the suggest `psr/container` package:
+
+```
+php composer.phar require psr/container
+```
+
+Register the Alpha Vantage Factory:
+
+```php
+return [
+    'dependencies' => [
+        'factories' => [
+            'alphavantage' => \AlphaVantage\Factory\AlphaVantageFactory::class,
+        ],
+    ],
+];
+```
+
+with the following configuration:
+
+```php
+return [
+    'alpha_vantage' => [
+        'api_key' => 'APIKEY',
+    ]
+];
+```

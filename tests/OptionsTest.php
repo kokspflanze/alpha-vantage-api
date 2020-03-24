@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AlphaVantageTest;
 
 use AlphaVantage\Options;
@@ -12,7 +14,7 @@ class OptionsTest extends TestCase
         $option = new Options();
         $this->assertEmpty($option->getApiKey());
 
-        $randomString = (string)rand(100,156489);
+        $randomString = (string)rand(100, 156489);
         $option->setApiKey($randomString);
         $this->assertSame($randomString, $option->getApiKey());
     }
@@ -22,7 +24,7 @@ class OptionsTest extends TestCase
         $option = new Options();
         $this->assertNotEmpty($option->getApiUrl());
 
-        $randomString = (string)rand(100,156489);
+        $randomString = (string)rand(100, 156489);
         $option->setApiUrl($randomString);
         $this->assertSame($randomString, $option->getApiUrl());
     }

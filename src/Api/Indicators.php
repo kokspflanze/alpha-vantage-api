@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AlphaVantage\Api;
 
 use AlphaVantage\Exception\BadMethodCallException;
@@ -51,22 +53,22 @@ use AlphaVantage\Exception\BadMethodCallException;
  */
 class Indicators extends AbstractApi
 {
-    const INTERVAL_1 = '1min';
-    const INTERVAL_5 = '5min';
-    const INTERVAL_15 = '15min';
-    const INTERVAL_30 = '30min';
-    const INTERVAL_60 = '60min';
-    const INTERVAL_DAILY = 'daily';
-    const INTERVAL_WEEKLY = 'weekly';
-    const INTERVAL_MONTHLY = 'monthly';
+    public const INTERVAL_1 = '1min';
+    public const INTERVAL_5 = '5min';
+    public const INTERVAL_15 = '15min';
+    public const INTERVAL_30 = '30min';
+    public const INTERVAL_60 = '60min';
+    public const INTERVAL_DAILY = 'daily';
+    public const INTERVAL_WEEKLY = 'weekly';
+    public const INTERVAL_MONTHLY = 'monthly';
 
-    const TIME_PERIOD_60 = 60;
-    const TIME_PERIOD_200 = 200;
+    public const TIME_PERIOD_60 = 60;
+    public const TIME_PERIOD_200 = 200;
 
-    const SERIES_TYPE_CLOSE = 'close';
-    const SERIES_TYPE_OPEN = 'open';
-    const SERIES_TYPE_LOW = 'low';
-    const SERIES_TYPE_HIGH = 'high';
+    public const SERIES_TYPE_CLOSE = 'close';
+    public const SERIES_TYPE_OPEN = 'open';
+    public const SERIES_TYPE_LOW = 'low';
+    public const SERIES_TYPE_HIGH = 'high';
 
     /**
      * @param string $name

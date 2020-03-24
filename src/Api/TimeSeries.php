@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AlphaVantage\Api;
 
 /**
@@ -8,14 +10,14 @@ namespace AlphaVantage\Api;
  */
 class TimeSeries extends AbstractApi
 {
-    const OUTPUT_TYPE_COMPACT = 'compact';
-    const OUTPUT_TYPE_FULL = 'full';
+    public const OUTPUT_TYPE_COMPACT = 'compact';
+    public const OUTPUT_TYPE_FULL = 'full';
 
-    const INTERVAL_1 = '1min';
-    const INTERVAL_5 = '5min';
-    const INTERVAL_15 = '15min';
-    const INTERVAL_30 = '30min';
-    const INTERVAL_60 = '60min';
+    public const INTERVAL_1 = '1min';
+    public const INTERVAL_5 = '5min';
+    public const INTERVAL_15 = '15min';
+    public const INTERVAL_30 = '30min';
+    public const INTERVAL_60 = '60min';
 
     /**
      * @param string $symbolName

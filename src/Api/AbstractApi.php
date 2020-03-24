@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AlphaVantage\Api;
 
 use AlphaVantage\Exception\RuntimeException;
@@ -17,8 +19,8 @@ use function rtrim;
  */
 class AbstractApi
 {
-    const DATA_TYPE_JSON = 'json';
-    const DATA_TYPE_CSV = 'csv';
+    public const DATA_TYPE_JSON = 'json';
+    public const DATA_TYPE_CSV = 'csv';
 
     /** @var  Options */
     protected $options;
