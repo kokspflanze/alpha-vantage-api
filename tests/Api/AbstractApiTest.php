@@ -15,7 +15,7 @@ class AbstractApiTest extends TestCase
     /** @var  \PHPUnit_Framework_MockObject_MockObject */
     protected $class;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->class = $this->getMockForAbstractClass(
@@ -58,7 +58,7 @@ class AbstractApiTest extends TestCase
 
         $this->assertSame(
             [
-                'Information' => 'The **demo** API key is for demo purposes only. Please claim your free API key at (https://www.alphavantage.co/support/#api-key) to explore our full API offerings. It takes fewer than 20 seconds, and we are committed to making it free forever.',
+                'Information' => 'The **demo** API key is for demo purposes only. Please claim your free API key at (https://www.alphavantage.co/support/#api-key) to explore our full API offerings. It takes fewer than 20 seconds.',
             ],
             $actual
         );

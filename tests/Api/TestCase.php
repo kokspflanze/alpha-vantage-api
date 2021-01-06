@@ -15,7 +15,7 @@ class TestCase extends \AlphaVantageTest\TestCase
     /** @var string */
     protected $symbol = 'MSFT';
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
