@@ -43,7 +43,6 @@ matrix:
     - php: 8.0
       env:
         - DEPS=latest
-        - EXECUTE_CS_CHECK=true
     - php: nightly
       env:
         - DEPS=locked
