@@ -57,6 +57,9 @@ class Client
             case 'economics':
                 $api = new Api\Economics($this->options);
                 break;
+            case 'fundamentals':
+                $api = new Api\Fundamentals($this->options);
+                break;
 
             default:
                 throw new Exception\InvalidArgumentException(
