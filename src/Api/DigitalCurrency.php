@@ -17,8 +17,10 @@ class DigitalCurrency extends AbstractApi
      * @param null|string $dataType
      * @return array
      */
-    public function digitalCurrencyRating(string $symbol, ?string $dataType = null)
-    {
+    public function digitalCurrencyRating(
+        string $symbol,
+        ?string $dataType = self::DATA_TYPE_JSON
+    ) {
         return $this->get(
             'CRYPTO_RATING',
             $symbol,
@@ -35,8 +37,12 @@ class DigitalCurrency extends AbstractApi
      * @param null|string $dataType
      * @return array
      */
-    public function digitalCurrencyIntraday(string $symbol, string $market, string $interval, ?string $dataType = null)
-    {
+    public function digitalCurrencyIntraday(
+        string $symbol,
+        string $market,
+        string $interval,
+        ?string $dataType = self::DATA_TYPE_JSON
+    ) {
         return $this->get(
             'CRYPTO_INTRADAY',
             $symbol,
@@ -54,8 +60,11 @@ class DigitalCurrency extends AbstractApi
      * @param null|string $dataType
      * @return array
      */
-    public function digitalCurrencyDaily(string $symbol, string $market, ?string $dataType = null)
-    {
+    public function digitalCurrencyDaily(
+        string $symbol,
+        string $market,
+        ?string $dataType = self::DATA_TYPE_JSON
+    ) {
         return $this->get(
             'DIGITAL_CURRENCY_DAILY',
             $symbol,
@@ -72,8 +81,11 @@ class DigitalCurrency extends AbstractApi
      * @param null|string $dataType
      * @return array
      */
-    public function digitalCurrencyWeekly(string $symbol, string $market, ?string $dataType = null)
-    {
+    public function digitalCurrencyWeekly(
+        string $symbol,
+        string $market,
+        ?string $dataType = self::DATA_TYPE_JSON
+    ) {
         return $this->get(
             'DIGITAL_CURRENCY_WEEKLY',
             $symbol,
@@ -90,8 +102,11 @@ class DigitalCurrency extends AbstractApi
      * @param null|string $dataType
      * @return array
      */
-    public function digitalCurrencyMonthly(string $symbol, string $market, ?string $dataType = null)
-    {
+    public function digitalCurrencyMonthly(
+        string $symbol,
+        string $market,
+        ?string $dataType = self::DATA_TYPE_JSON
+    ) {
         return $this->get(
             'DIGITAL_CURRENCY_MONTHLY',
             $symbol,

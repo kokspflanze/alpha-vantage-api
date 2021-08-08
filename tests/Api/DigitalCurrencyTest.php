@@ -10,7 +10,12 @@ class DigitalCurrencyTest extends TestCase
 {
     public function testDigitalCurrencyIntraday()
     {
-        $actual = (new DigitalCurrency($this->option))->digitalCurrencyIntraday('ETH', 'USD', DigitalCurrency::INTERVAL_5);
+        $actual = (new DigitalCurrency($this->option))->digitalCurrencyIntraday(
+            'ETH',
+            'USD',
+            DigitalCurrency::INTERVAL_5,
+            null
+        );
 
         $this->assertIsArray($actual);
         $this->assertCount(2, $actual);
@@ -24,7 +29,11 @@ class DigitalCurrencyTest extends TestCase
 
     public function testDigitalCurrencyDaily()
     {
-        $actual = (new DigitalCurrency($this->option))->digitalCurrencyDaily('BTC', 'CNY');
+        $actual = (new DigitalCurrency($this->option))->digitalCurrencyDaily(
+            'BTC',
+            'CNY',
+            null
+        );
 
         $this->assertIsArray($actual);
         $this->assertCount(2, $actual);
@@ -38,7 +47,11 @@ class DigitalCurrencyTest extends TestCase
 
     public function testDigitalCurrencyWeekly()
     {
-        $actual = (new DigitalCurrency($this->option))->digitalCurrencyWeekly('BTC', 'CNY');
+        $actual = (new DigitalCurrency($this->option))->digitalCurrencyWeekly(
+            'BTC',
+            'CNY',
+            null
+        );
 
         $this->assertIsArray($actual);
         $this->assertCount(2, $actual);
@@ -52,7 +65,11 @@ class DigitalCurrencyTest extends TestCase
 
     public function testDigitalCurrencyMonthly()
     {
-        $actual = (new DigitalCurrency($this->option))->digitalCurrencyMonthly('BTC', 'CNY');
+        $actual = (new DigitalCurrency($this->option))->digitalCurrencyMonthly(
+            'BTC',
+            'CNY',
+            null
+        );
 
         $this->assertIsArray($actual);
         $this->assertCount(2, $actual);
