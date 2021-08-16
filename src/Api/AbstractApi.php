@@ -8,6 +8,7 @@ use AlphaVantage\Exception\RuntimeException;
 use AlphaVantage\Options;
 use GuzzleHttp\Client;
 
+use function array_filter;
 use function GuzzleHttp\json_decode;
 use function http_build_query;
 use function array_merge;
@@ -47,6 +48,10 @@ class AbstractApi
     protected function get(string $functionName, string $symbolName = null, array $params = [])
     {
         unset($params['functions'], $params['function'], $params['apikey']);
+
+        $params = array_filter($params, function ($p) {
+            return !empty($p);
+        });
 
         $basicData = [
             'function' => $functionName,

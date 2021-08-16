@@ -13,6 +13,7 @@ namespace AlphaVantage;
  * @method Api\Performance performance()
  * @method Api\ForeignExchange foreignExchange()
  * @method Api\DigitalCurrency digitalCurrency()
+ * @method Api\Economics economics()
  */
 class Client
 {
@@ -52,6 +53,12 @@ class Client
                 break;
             case 'digitalcurrency':
                 $api = new Api\DigitalCurrency($this->options);
+                break;
+            case 'economics':
+                $api = new Api\Economics($this->options);
+                break;
+            case 'fundamentals':
+                $api = new Api\Fundamentals($this->options);
                 break;
 
             default:
